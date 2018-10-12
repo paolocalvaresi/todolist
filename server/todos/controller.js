@@ -1,7 +1,8 @@
 module.exports = (function () {
 
     var getAll = function (req, res) {
-        res.send("tutti i miei todos");
+        var genere = req.query.genere;
+        res.send(genere);
     }
     var getOne = function (req, res) {
         res.send("il todo con id: " + req.params.id);

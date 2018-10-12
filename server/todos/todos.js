@@ -12,7 +12,6 @@ todos.get('/:id', controller.getOne);
 
 //CREAZIONE DI UN TODO
 todos.post('/', controller.create);
-tdfwhfwq
 //MOdIFICA DI UN TODO
 todos.put('/:id', controller.update);
 
