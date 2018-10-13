@@ -1,15 +1,31 @@
+var Todo = require('./Todo.js');
 module.exports = (function () {
 
     var getAll = function (req, res) {
-        var genere = req.query.genere;
-        res.send(genere);
+        Todo
+            .find()
+            .then(function (data) {
+                res.json(data);
+            })
+            .catch(function (err) {
+                res.json(err);
+            })
     }
     var getOne = function (req, res) {
         res.send("il todo con id: " + req.params.id);
     }
 
     var create = function (req, res) {
-        res.send("creo il todo: " + req.body);
+        var payload = req.body;
+        var todo = new Todo(payload);
+        todo.save()
+            .then(function (data) {
+                res.json(data)
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+
     }
 
     var update = function (req, res) {
