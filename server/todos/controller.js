@@ -6,6 +6,11 @@ module.exports = (function () {
 
     var getAll = function (req, res) {
         var concluso = req.query.concluso;
+        var concluso = req.query.concluso;
+        var concluso = req.query.concluso;
+        var concluso = req.query.concluso;
+        var concluso = req.query.concluso;
+        var concluso = req.query.concluso;
 
         if (concluso === undefined) {
             var query = Todo.find();
