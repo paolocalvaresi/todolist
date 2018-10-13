@@ -1,14 +1,30 @@
 var Todo = require('./Todo.js');
 module.exports = (function () {
 
+
+
+
     var getAll = function (req, res) {
-        Todo.find()
-            .then(function (data) {
+        var concluso = req.query.concluso;
+
+        if (concluso === undefined) {
+            var query = Todo.find();
+
+        } else {
+            var query = Todo.find({
+                concluso: concluso
+            })
+        }
+
+        query.exec().then(function (data) {
                 res.json(data)
             })
             .catch(function (err) {
                 res.json(err);
             })
+
+
+
     }
     var getOne = function (req, res) {
         Todo.findById(req.params.id)
