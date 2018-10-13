@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+//connessione al database
+require('./config/db');
+
 // REQUIRE DELLE ROTTE DELLA MIA APPLICAZIONE
 require('./routes/routes.js')(express,app);
 
