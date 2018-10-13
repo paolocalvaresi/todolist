@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
 
-var schema = mongoose.Schema;
 
-var todoSchema = new schema({
+var todoSchema = new mongoose.Schema({
 
     titolo: {
         type: String,
@@ -16,7 +15,9 @@ var todoSchema = new schema({
         type: Date,
         required: true
     },
-    fine: Date,
+    fine: {
+        type: Date
+    }
 });
 
 var Todo = mongoose.model('Todo', todoSchema);
