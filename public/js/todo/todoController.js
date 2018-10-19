@@ -1,8 +1,21 @@
 angular.module('app').controller('todoController', function ($scope) {
 
     //DEFINIAMO TUTTA LA LOGICA DEL NOSTRO CONTROLLER
-
-    $scope.todos = [{
+    $scope.titolo = "LA LISTA DELLE COSE DA FARE";
+    $scope.todos = [
+        {
+            titolo: "Scaricare bootstrap",
+            fatto: false
+        },
+        {
+            titolo: "Scaricare fontawesome",
+            fatto: false
+        },
+        {
+            titolo: "abbellire la applicazione",
+            fatto: false
+        },
+        {
             titolo: "fare la spesa",
             fatto: true
         },
@@ -17,6 +30,7 @@ angular.module('app').controller('todoController', function ($scope) {
     ];
 
     $scope.inserttodo = function () {
+
         var nuovo = {
             titolo: $scope.nuovotodo,
             fatto: false
