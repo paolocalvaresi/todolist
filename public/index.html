@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 ng-bind="titolo" class="text-center mt-5 text-warning"></h1>
+                <h1 ng-bind="titolo" class="text-center mt-5 text-light"></h1>
             </div>
         </div>
         <div class="row my-5">
@@ -27,14 +27,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <p ng-repeat="todo in todos">
+            <div class="col-md-12" ng-repeat="todo in todos">
+                <p >
                     <button class="btn btn-disabled" ng-hide="todo.fatto" ng-click="modifica($index)"><i class="fas fa-check"></i></button>
                     <button class="btn btn-success" ng-show="todo.fatto" ng-click="modifica($index)"><i class="fas fa-check"></i></button>
-                    <button class="btn btn-danger" ng-click="cancella($index)"><i class="fas fa-trash"></i></button>
-                    <span ng-bind="todo.titolo" class="font-weight-bold text-capitalize" ng-style="todo.fatto && {'text-decoration': 'line-through'}"></span>
-
+                    <button class="btn btn-danger ml-2" ng-click="cancella($index)"><i class="fas fa-trash"></i></button>
+                    <span ng-bind="todo.titolo" class="ml-2 font-weight-bold text-capitalize" ng-style="todo.fatto && {'text-decoration': 'line-through'}"></span>
                 </p>
+                <hr>
             </div>
         </div>
     </div>
