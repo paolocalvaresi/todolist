@@ -1,4 +1,5 @@
 var Todo = require('./Todo.js');
+var User = require('../users/User.js');
 module.exports = (function () {
 
     var getAll = function (req, res) {
@@ -14,6 +15,7 @@ module.exports = (function () {
         }
 
         query
+            .populate('autore')
             .exec()
             .then(function (data) {
                 res.json(data)

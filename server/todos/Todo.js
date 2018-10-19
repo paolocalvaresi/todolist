@@ -7,6 +7,11 @@ var todoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    autore: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
     concluso: {
         type: Boolean,
         default: false

@@ -8,8 +8,25 @@
     <title>Document</title>
 </head>
 
-<body>
-    <h1>Ciao</h1>
+<body ng-app="app" ng-controller="todoController">
+
+    <input type="text" ng-model="nuovotodo">
+    <button type="button" ng-click="inserttodo()">Inserisci</button>
+
+    <p ng-repeat="todo in todos">
+        <button ng-click="modifica($index)">F</button>
+        <button ng-click="cancella($index)">X</button>
+        <span>{{todo.titolo}}</span>
+        <span ng-if="todo.fatto"> / fatto</span>
+    </p>
+
 </body>
+
+<!-- dipendenze esterne -->
+<script src="/angular/angular.min.js"></script>
+
+<!-- nostre esterne -->
+<script src="/js/app.js"></script>
+<script src="/js/todo/todoController.js"></script>
 
 </html>
