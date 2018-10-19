@@ -10,17 +10,21 @@ module.exports = function (express, app) {
     //PARSE APPLICATION/JSON
     app.use(bodyparser.json());
 
-    //SERVIAMO ANGULAR AL CLIENT
-    app.use('/angular', express.static(path.join(__dirname,'..','..','node_modules','angular')));
-    
+    //SERVIAMO  I MODULI AL CLIENT
+    app.use('/angular', express.static(path.join(__dirname, '..', '..', 'node_modules', 'angular')));
+    app.use('/bootstrap', express.static(path.join(__dirname, '..', '..', 'node_modules', 'bootstrap','dist')));
+
     //SERVIAMO JS AL CLIENT
-    app.use('/js', express.static(path.join(__dirname,'..','..','public','js')));
+    app.use('/js', express.static(path.join(__dirname, '..', '..', 'public', 'js')));
+    app.use('/css', express.static(path.join(__dirname, '..', '..', 'public', 'css')));
+    app.use('/images', express.static(path.join(__dirname, '..', '..', 'public', 'images')));
+
+
+    //Utilizzo il router todos per tutte le rotte che partono con /todos
+    app.use('/todos', todos);
 
     //Mi invia la index.html al cliente
     app.get('/*', function (req, res) {
         res.sendFile(path.join(__dirname, '..', '..', 'public', 'index.html'));
     });
-
-    //Utilizzo il router todos per tutte le rotte che partono con /todos
-    app.use('/todos', todos);
 }
