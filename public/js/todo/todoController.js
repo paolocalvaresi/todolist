@@ -1,50 +1,67 @@
-angular.module('app').controller('todoController', function ($scope) {
+angular.module('app')
+    .controller('todoController', function (
+        $scope,
+        todoService) {
 
-    //DEFINIAMO TUTTA LA LOGICA DEL NOSTRO CONTROLLER
-    $scope.titolo = "LA LISTA DELLE COSE DA FARE";
-    $scope.todos = [
-        {
-            titolo: "Scaricare bootstrap",
-            fatto: false
-        },
-        {
-            titolo: "Scaricare fontawesome",
-            fatto: false
-        },
-        {
-            titolo: "abbellire la applicazione",
-            fatto: false
-        },
-        {
-            titolo: "fare la spesa",
-            fatto: true
-        },
-        {
-            titolo: "andare al cinema",
-            fatto: false
-        },
-        {
-            titolo: "spiegare angular",
-            fatto: true
+        // DEFINIAMO TUTTA LA LOGICA DEL NOSTRO CONTROLLER
+        $scope.titolo = "LA LISTA DELLE COSE DA FARE";
+
+        // RECUPERO I TODOS
+        todoService.getAll()
+            .then(function (res) {
+                $scope.todos = res.data;
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+
+
+        $scope.inserttodo = function () {
+
+            var nuovo = {
+                titolo: $scope.nuovotodo,
+                inizio: new Date(),
+                autore: '5bc1ff38fb6fc0602744c8c5'
+            }
+
+            todoService.create(nuovo)
+                .then(function (res) {
+                    return todoService.getAll();
+                })
+                .then(function (res) {
+                    $scope.todos = res.data;
+                })
+                .catch(function (err) {
+                    console.log(err)
+                });
+
         }
-    ];
 
-    $scope.inserttodo = function () {
-
-        var nuovo = {
-            titolo: $scope.nuovotodo,
-            fatto: false
+        $scope.modifica = function (id, concluso) {
+            todoService.update(id, concluso)
+                .then(function (res) {
+                    return todoService.getAll();
+                })
+                .then(function (res) {
+                    $scope.todos = res.data;
+                })
+                .catch(function (err) {
+                    console.log(err)
+                });
         }
 
-        $scope.todos.unshift(nuovo);
-    }
+        $scope.cancella = function (id) {
 
-    $scope.modifica = function (indice) {
-        $scope.todos[indice].fatto = !$scope.todos[indice].fatto
-    }
+            todoService.deleteOne(id)
+                .then(function (res) {
+                    return todoService.getAll();
+                })
+                .then(function (res) {
+                    $scope.todos = res.data;
+                })
+                .catch(function (err) {
+                    console.log(err)
+                });
+        }
 
-    $scope.cancella = function (indice) {
-        $scope.todos.splice(indice, 1);
-    }
-
-});
+    });

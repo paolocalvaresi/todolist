@@ -26,13 +26,15 @@
                 <button type="button" class="btn btn-success" ng-click="inserttodo()" ng-disabled="!nuovotodo.length">Inserisci</button>
             </div>
         </div>
-        <div class="row">
+        <div class="row" ng-show="todos.length">
             <div class="col-md-12" ng-repeat="todo in todos">
                 <p>
-                    <button class="btn btn-disabled" ng-hide="todo.fatto" ng-click="modifica($index)"><i class="fas fa-check"></i></button>
-                    <button class="btn btn-success" ng-show="todo.fatto" ng-click="modifica($index)"><i class="fas fa-check"></i></button>
-                    <button class="btn btn-danger ml-2" ng-click="cancella($index)"><i class="fas fa-trash"></i></button>
-                    <span ng-bind="todo.titolo" class="ml-2 font-weight-bold text-capitalize" ng-style="todo.fatto && {'text-decoration': 'line-through'}"></span>
+                    <button class="btn btn-disabled" ng-hide="todo.concluso" ng-click="modifica(todo._id, todo.concluso)"><i
+                            class="fas fa-check"></i></button>
+                    <button class="btn btn-success" ng-show="todo.concluso" ng-click="modifica(todo._id, todo.concluso)"><i
+                            class="fas fa-check"></i></button>
+                    <button class="btn btn-danger ml-2" ng-click="cancella(todo._id)"><i class="fas fa-trash"></i></button>
+                    <span ng-bind="todo.titolo" class="ml-2 font-weight-bold text-capitalize" ng-style="todo.conluso && {'text-decoration': 'line-through'}"></span>
                 </p>
                 <hr>
             </div>
@@ -55,5 +57,6 @@
 <!-- dipendenze interne -->
 <script src="/js/app.js"></script>
 <script src="/js/todo/todoController.js"></script>
+<script src="/js/todo/todoService.js"></script>
 
 </html>
