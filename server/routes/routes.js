@@ -14,6 +14,9 @@ module.exports = function (express, app) {
     app.use('/angular', express.static(path.join(__dirname, '..', '..', 'node_modules', 'angular')));
     app.use('/bootstrap', express.static(path.join(__dirname, '..', '..', 'node_modules', 'bootstrap','dist')));
     app.use('/jquery', express.static(path.join(__dirname, '..', '..', 'node_modules', 'jquery','dist')));
+    app.use('/moment', express.static(path.join(__dirname, '..', '..', 'node_modules', 'moment')));
+    app.use('/datetimepicker', express.static(path.join(__dirname, '..', '..', 'node_modules', '@ui-platform', 'angularjs-bootstrap4-datetimepicker','dist')));
+    app.use('/datetimeinput', express.static(path.join(__dirname, '..', '..', 'node_modules', 'angular-date-time-input', 'src')));
 
     //SERVIAMO JS AL CLIENT
     app.use('/js', express.static(path.join(__dirname, '..', '..', 'public', 'js')));
