@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             <div class="col-md-12" ng-repeat="todo in todos">
-                <p >
+                <p>
                     <button class="btn btn-disabled" ng-hide="todo.fatto" ng-click="modifica($index)"><i class="fas fa-check"></i></button>
                     <button class="btn btn-success" ng-show="todo.fatto" ng-click="modifica($index)"><i class="fas fa-check"></i></button>
                     <button class="btn btn-danger ml-2" ng-click="cancella($index)"><i class="fas fa-trash"></i></button>
@@ -38,8 +38,13 @@
             </div>
         </div>
     </div>
-
 </body>
+
+<!-- LIVERELOAD -->
+<script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+        ':35729/livereload.js?snipver=1"></' + 'script>')
+</script>
 
 <!-- dipendenze esterne -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
