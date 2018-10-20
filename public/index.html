@@ -24,10 +24,21 @@
                 <input type="text" ng-model="nuovotodo" class="form-control" placeholder="cosa vorresti fare?">
             </div>
             <div class="col-4">
-                <datetimepicker data-ng-model="data"></datetimepicker>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="dropdown" role="button" data-toggle="dropdown" data-target=".dropdown"
+                        href="#">
+                        <div class="input-group">
+                            <input type="text" id="date" name="date" class="form-control" data-ng-model="data | date:'dd/MM/yyyy HH:mm'">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="data" data-datetimepicker-config="{ dropdownSelector: '#dropdown' }"></datetimepicker>
+                    </ul>
+                </div>
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-success" ng-click="inserttodo()" ng-disabled="!nuovotodo.length">Inserisci</button>
+                <button type="button" class="btn btn-success" ng-click="inserttodo()" ng-disabled="!nuovotodo.length || !data">Inserisci</button>
             </div>
         </div>
         <div class="row" ng-show="todos.length">
@@ -38,6 +49,7 @@
                     <button class="btn btn-success" ng-show="todo.concluso" ng-click="modifica(todo._id, todo.concluso)"><i
                             class="fas fa-check"></i></button>
                     <button class="btn btn-danger ml-2" ng-click="cancella(todo._id)"><i class="fas fa-trash"></i></button>
+                    <span ng-bind="todo.inizio | date:'dd/MM/yyyy HH:mm'" class="ml-2 font-weight-bold text-capitalize"></span>
                     <span ng-bind="todo.titolo" class="ml-2 font-weight-bold text-capitalize" ng-style="todo.conluso && {'text-decoration': 'line-through'}"></span>
                 </p>
                 <hr>

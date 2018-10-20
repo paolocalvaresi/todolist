@@ -20,7 +20,7 @@ angular.module('app')
 
             var nuovo = {
                 titolo: $scope.nuovotodo,
-                inizio: new Date(),
+                inizio: $scope.data,
                 autore: '5bc1ff38fb6fc0602744c8c5'
             }
 
